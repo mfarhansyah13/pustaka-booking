@@ -14,8 +14,8 @@ class Home extends CI_Controller {
             'buku' => $this->ModelBuku->getBuku()->result(),
         ];
         if ($this->session->userdata('email')) {
-            $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
-            // $data['user'] = $user['nama'];
+            $user = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
+            $data['user'] = $user['nama'];
             $this->load->view('templates/templates-user/header', $data);
             $this->load->view('buku/daftarbuku', $data);
             $this->load->view('templates/templates-user/modal');

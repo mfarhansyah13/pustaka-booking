@@ -50,11 +50,7 @@
                     <span class="nav-item nav-link nav-right" style="display:block; margin-left:20px;">Selamat Datang 
                         <b>
                             <?php
-                            if($this->session->userdata('email')){
-                                echo $user['nama'];
-                            } else {
                                 echo $user;
-                            }
                             ?>
                         </b>
                     </span>

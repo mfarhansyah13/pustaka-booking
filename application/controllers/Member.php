@@ -82,16 +82,16 @@ class Member extends CI_Controller {
     public function myProfil()
     {
         $data['title'] = 'Profil Saya';
-        $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
+        $user = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
         
-        // foreach ($user as $a) {
-        //     $data = [
-        //         'image' => $user['image'],
-        //         'user' => $user['nama'],
-        //         'email' => $user['email'],
-        //         'tanggal_input' => $user['tanggal_input'],
-        //     ];
-        // }
+      
+        $data = [
+            'image' => $user['image'],
+            'user' => $user['nama'],
+            'email' => $user['email'],
+            'tanggal_input' => $user['tanggal_input'],
+        ];
+        
         $this->load->view('templates/templates-user/header', $data);
         $this->load->view('member/index', $data);
         $this->load->view('templates/templates-user/modal');
@@ -102,17 +102,15 @@ class Member extends CI_Controller {
     // Edit Profile
     public function ubahProfil()
     {
-        // $data['judul'] = 'Profil Saya';
-        $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
+        $data['title'] = 'Profil Saya';
+        $user = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
 
-        // foreach ($user as $a) {
-        //     $data = [
-        //         'image' => $user['image'],
-        //         'user' => $user['nama'],
-        //         'email' => $user['email'],
-        //         'tanggal_input' => $user['tanggal_input'],
-        //     ];
-        // }
+        $data = [
+            'image' => $user['image'],
+            'user' => $user['nama'],
+            'email' => $user['email'],
+            'tanggal_input' => $user['tanggal_input'],
+        ];
 
         $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required|trim', ['required' => 'Nama tidak Boleh Kosong']);
         if ($this->form_validation->run() == false) {
